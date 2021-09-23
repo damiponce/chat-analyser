@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html,
+body {
+   padding: 0;
+   margin: 0;
+   font-family: Lexend, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+      Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+      sans-serif;
+}
+
+main {
+   background: #e0e0e0;
+   padding: 2rem 3rem;
+   flex: 1;
+   // display: flex;
+   // flex-direction: column;
+   // justify-content: center;
+   // align-items: center;
+   width: 100%;
+   max-width: 1398px;
+   overflow: hidden;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+* {
+   box-sizing: border-box;
+}
+
+.uploader_box {
+   max-width: 300px;
+   align-self: center;
+}
+
+* {
+   scrollbar-width: thin;
+   scrollbar-color: #0005 #0002;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+   width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+   background: #0002;
+   padding: 2px;
+}
+
+*::-webkit-scrollbar-thumb {
+   background-color: #0005;
+   border-radius: 0px;
+}
+
+#chart_main {
+   // box-shadow: #0005 0px 0px 8px;
+
+   background: #e0e0e0;
+   box-shadow: 23px 23px 46px #c1c1c1, -23px -23px 46px #ffffff;
+
+   border-radius: 14px;
+   align-self: flex-start;
+   font-size: 0;
+}
