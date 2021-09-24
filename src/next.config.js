@@ -21,7 +21,5 @@ module.exports = {
       );
       return config;
    },
-   assetPrefix: isProd
-      ? 'https://raw.githubusercontent.com/damiponce/chat-analyser/gh-pages/'
-      : '',
+   assetPrefix: isProd ? '/chat-analyser/' : '',
 };
