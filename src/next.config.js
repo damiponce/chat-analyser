@@ -22,6 +22,6 @@ module.exports = {
       return config;
    },
    assetPrefix: isProd
-      ? 'https://github.com/damiponce/chat-analyser/tree/gh-pages/'
+      ? 'https://raw.githubusercontent.com/damiponce/chat-analyser/gh-pages/'
       : '',
 };
