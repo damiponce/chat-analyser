@@ -22,6 +22,6 @@ module.exports = {
       return config;
    },
    assetPrefix: isProd
-      ? 'https://cdn.statically.io/gh/damiponce//chat-analyser/gh-pages/'
+      ? 'https://cdn.statically.io/gh/damiponce/chat-analyser/gh-pages/'
       : '',
 };
