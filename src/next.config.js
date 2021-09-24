@@ -21,5 +21,7 @@ module.exports = {
       );
       return config;
    },
-   assetPrefix: isProd ? '/chat-analyser/' : '',
+   assetPrefix: isProd
+      ? 'https://cdn.statically.io/gh/damiponce//chat-analyser/gh-pages/'
+      : '',
 };
