@@ -51,16 +51,18 @@ export default function Example({
    const dateScale = scaleBand<string>({
       domain: data.map(d => d.label),
       padding: 0.2,
+      paddingOuter: 0.3,
    });
    const cityScale = scaleBand<string>({
       domain: keys,
       padding: 0.1,
    });
 
-   let data_parsed = [];
+   let data_parsed: any[] = [];
    for (let day of data) {
       var temp_day: BarStats = {label: ''};
       for (let user in day) {
+         //@ts-ignore
          temp_day[user] = user === 'label' ? day[user] : day[user]['mean'];
       }
       data_parsed.push(temp_day);
@@ -214,6 +216,7 @@ export default function Example({
                   fontSize: 11,
                   textAnchor: 'middle',
                })}
+               numTicks={24}
             />
          </svg>
       </div>

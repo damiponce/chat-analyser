@@ -137,6 +137,7 @@ export default withTooltip<StatsPlotProps, TooltipData>(
                      data={data}
                      keys={keys}
                      height={yMax}
+                     //@ts-ignore
                      x0={(d: Stats[]) => d[0].boxPlot.x}
                      x0Scale={dateScale}
                      x1Scale={cityScale}

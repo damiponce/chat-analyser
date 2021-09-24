@@ -104,7 +104,7 @@ export default function AreaChart({
       ) => {
          debugger;
          const {x} = localPoint(event) || {x: 0};
-         const x0 = xScale(getDate(data[0]));
+         const x0 = xScale(getDate(data[0])) || 0;
          const index = bisectDate(data, x0, 1);
          const d0 = data[index - 1];
          const d1 = data[index];
@@ -194,7 +194,7 @@ export default function AreaChart({
                />
                <circle
                   cx={tooltipLeft}
-                  cy={tooltipTop + 1}
+                  cy={(tooltipTop || 0) + 1}
                   r={4}
                   fill="black"
                   fillOpacity={0.1}
@@ -219,8 +219,8 @@ export default function AreaChart({
             <div>
                <TooltipWithBounds
                   key={Math.random()}
-                  top={tooltipTop - 12}
-                  left={tooltipLeft + 12}>
+                  top={(tooltipTop || 0) - 12}
+                  left={(tooltipLeft || 0) + 12}>
                   {/* {`$${getStockValue(tooltipData)}`} */}
                </TooltipWithBounds>
                <Tooltip

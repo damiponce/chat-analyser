@@ -14,9 +14,9 @@ export function rgbToHsl(r: number, g: number, b: number) {
 
    var max = Math.max(r, g, b),
       min = Math.min(r, g, b);
-   var h,
-      s,
-      l = (max + min) / 2;
+   var h = (max + min) / 2;
+   var s = (max + min) / 2;
+   var l = (max + min) / 2;
 
    if (max == min) {
       h = s = 0; // achromatic
@@ -59,6 +59,7 @@ export function hslToRgb(h: number, s: number, l: number) {
    if (s == 0) {
       r = g = b = l; // achromatic
    } else {
+      //@ts-ignore
       function hue2rgb(p: number, q: number, t: number) {
          if (t < 0) t += 1;
          if (t > 1) t -= 1;
@@ -95,9 +96,9 @@ export function rgbToHsv(r: number, g: number, b: number) {
 
    var max = Math.max(r, g, b),
       min = Math.min(r, g, b);
-   var h,
-      s,
-      v = max;
+   var h = max;
+   var s = max;
+   var v = max;
 
    var d = max - min;
    s = max == 0 ? 0 : d / max;
@@ -164,5 +165,6 @@ export function hsvToRgb(h: number, s: number, v: number) {
          break;
    }
 
+   //@ts-ignore
    return [r * 255, g * 255, b * 255];
 }

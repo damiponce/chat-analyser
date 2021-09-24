@@ -23,8 +23,6 @@ import {
 import Example from '../components/plots/Heatmap';
 import Wordcloud from '../components/plots/WordCloud';
 import XY from '../components/plots/TimelineChart copy';
-import TEST from '../components/plots/XY';
-import Testing from '../components/plots/TESTING';
 import BarGroup from '../components/plots/BarGroup';
 import {getHash, getSeed} from './api/RNG';
 import * as Colour from './api/Colour';
@@ -68,10 +66,12 @@ const Home: NextPage = () => {
       if (didOutput === true) {
          console.log('============= PYTHON =============');
          let pd = pyodide.current.globals.get('pd');
+         //@ts-ignore
          let data = {user: df[1], msg: df[2]};
          // let d = {col1: [1, 2], col2: [3, 4]};
          // let dt = pd.DataFrame(d);
          pyodide.current.globals.set('data', data);
+         //@ts-ignore
          pyodide.current.globals.set('index', df[0]);
          pyodide.current.runPython(`
             df = pd.DataFrame(data=data.to_py(), index=pd.to_datetime(index.to_py(), format="%Y%m%d%H%M"))
@@ -125,7 +125,9 @@ const Home: NextPage = () => {
          for (let x of df_tl) {
             let temp_df_tl: Timeline[] = [];
             var i = 0;
+            //@ts-ignore
             for (let date of x.index) {
+               //@ts-ignore
                temp_df_tl.push({date: date, qty: x.data[i][0]});
                i++;
             }
@@ -419,8 +421,8 @@ const Home: NextPage = () => {
                      <div
                         onChange={onChangeValue}
                         className={styles.radio_group}>
-                        {df_timeline.map((value, index) => (
-                           <label>
+                        {df_timeline.map((value, index, key) => (
+                           <label key={index}>
                               <input
                                  defaultChecked
                                  type="checkbox"
