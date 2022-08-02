@@ -11,7 +11,7 @@ import {
    DailyBox,
    HeatmapBin,
    HeatmapDelayBin,
-} from '../../pages/types/dataTypes';
+} from '../../types/dataTypes';
 import {
    withTooltip,
    Tooltip,
@@ -202,6 +202,7 @@ export default withTooltip<HeatmapProps, TooltipData>(
                      hideAxisLine
                      hideTicks
                      numTicks={bucketSizeMax}
+                     // @ts-ignore
                      tickFormat={(d: number) =>
                         [null, 180, 120, 60, 30, 10, 5, 2, 1, 0][d]
                      }
@@ -220,6 +221,7 @@ export default withTooltip<HeatmapProps, TooltipData>(
                      hideAxisLine
                      tickStroke={color}
                      left={binWidth / 2}
+                     // @ts-ignore
                      tickFormat={d => (d < 24 ? d : null)}
                      tickValues={
                         xMax > 750

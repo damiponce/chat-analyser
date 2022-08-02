@@ -1,11 +1,10 @@
 import React, {useMemo} from 'react';
 import {Bar} from '@visx/shape';
 import {Group} from '@visx/group';
-import {GradientTealBlue} from '@visx/gradient';
 import {scaleBand, scaleLinear} from '@visx/scale';
 import {AxisLeft, AxisBottom} from '@visx/axis';
 import {GridRows} from '@visx/grid';
-import {HourlyBar, DailyBar} from '../../pages/types/dataTypes';
+import {HourlyBar, DailyBar} from '../../types/dataTypes';
 
 export type BarsProps = {
    width: number;
@@ -43,7 +42,8 @@ export default function BarGraph({
          scaleBand<string>({
             range: [0, xMax],
             round: true,
-            domain: data.map(getX),
+
+            domain: data.map(e => String(getX(e))),
             padding: 0.4,
          }),
       [xMax],
@@ -67,7 +67,7 @@ export default function BarGraph({
          <Group left={45} top={margin.top}>
             <Group>
                {data.map(d => {
-                  const letter = getX(d);
+                  const letter = String(getX(d));
                   const barWidth = xScale.bandwidth();
                   const barHeight = yMax - (yScale(getY(d)) ?? 0);
                   const barX = xScale(letter);
@@ -136,7 +136,7 @@ export default function BarGraph({
                         : String(label).charAt(0)
                      : parseInt(label) < 24
                      ? label
-                     : null
+                     : undefined
                }
                hideZero
                tickValues={
@@ -182,7 +182,7 @@ export default function BarGraph({
                              '20',
                              '22',
                           ]
-                     : null
+                     : undefined
                }
                tickLabelProps={() => ({
                   fontSize: 11,

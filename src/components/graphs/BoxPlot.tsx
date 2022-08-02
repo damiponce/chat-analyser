@@ -5,7 +5,7 @@ import {Group} from '@visx/group';
 import {scaleBand, scaleLinear} from '@visx/scale';
 import {AxisLeft, AxisBottom} from '@visx/axis';
 import {GridRows} from '@visx/grid';
-import {HourlyBox, DailyBox} from '../../pages/types/dataTypes';
+import {HourlyBox, DailyBox} from '../../types/dataTypes';
 import {
    withTooltip,
    Tooltip,
@@ -73,7 +73,7 @@ export default withTooltip<BoxProps, TooltipData>(
             scaleBand<string>({
                range: [0, xMax],
                round: true,
-               domain: data.map(x),
+               domain: data.map(e => String(x(e))),
                padding: 0.4,
             }),
          [xMax],
@@ -124,10 +124,11 @@ export default withTooltip<BoxProps, TooltipData>(
                      {data.map((d: HourlyBox | DailyBox) => {
                         return (
                            <BoxPlot
+                              // @ts-ignore
                               key={d.hour || d.day}
                               min={min(d)}
                               max={max(d)}
-                              left={xScale(x(d))!}
+                              left={xScale(String(x(d)))!}
                               firstQuartile={firstQuartile(d)}
                               thirdQuartile={thirdQuartile(d)}
                               median={median(d)}
@@ -145,10 +146,12 @@ export default withTooltip<BoxProps, TooltipData>(
                                     showTooltip({
                                        tooltipTop: yScale(min(d)) ?? 0 + 40,
                                        tooltipLeft:
-                                          xScale(x(d))! + constrainedWidth + 5,
+                                          xScale(String(x(d)))! +
+                                          constrainedWidth +
+                                          5,
                                        tooltipData: {
                                           min: min(d),
-                                          name: x(d),
+                                          name: String(x(d)),
                                        },
                                     });
                                  },
@@ -161,10 +164,12 @@ export default withTooltip<BoxProps, TooltipData>(
                                     showTooltip({
                                        tooltipTop: yScale(max(d)) ?? 0 + 40,
                                        tooltipLeft:
-                                          xScale(x(d))! + constrainedWidth + 5,
+                                          xScale(String(x(d)))! +
+                                          constrainedWidth +
+                                          5,
                                        tooltipData: {
                                           max: max(d),
-                                          name: x(d),
+                                          name: String(x(d)),
                                        },
                                     });
                                  },
@@ -177,10 +182,12 @@ export default withTooltip<BoxProps, TooltipData>(
                                     showTooltip({
                                        tooltipTop: yScale(median(d)) ?? 0 + 40,
                                        tooltipLeft:
-                                          xScale(x(d))! + constrainedWidth + 5,
+                                          xScale(String(x(d)))! +
+                                          constrainedWidth +
+                                          5,
                                        tooltipData: {
                                           ...d,
-                                          name: x(d),
+                                          name: String(x(d)),
                                        },
                                     });
                                  },
@@ -196,10 +203,12 @@ export default withTooltip<BoxProps, TooltipData>(
                                     showTooltip({
                                        tooltipTop: yScale(median(d)) ?? 0 + 40,
                                        tooltipLeft:
-                                          xScale(x(d))! + constrainedWidth + 5,
+                                          xScale(String(x(d)))! +
+                                          constrainedWidth +
+                                          5,
                                        tooltipData: {
                                           median: median(d),
-                                          name: x(d),
+                                          name: String(x(d)),
                                        },
                                     });
                                  },
@@ -213,10 +222,13 @@ export default withTooltip<BoxProps, TooltipData>(
                                     showTooltip({
                                        tooltipTop: yScale(median(d)) ?? 0 + 40,
                                        tooltipLeft:
-                                          xScale(x(d))! + constrainedWidth + 5,
+                                          xScale(String(x(d)))! +
+                                          constrainedWidth +
+                                          5,
                                        tooltipData: {
+                                          // @ts-ignore
                                           outlier: outliers(d),
-                                          name: x(d),
+                                          name: String(x(d)),
                                        },
                                     });
                                  },

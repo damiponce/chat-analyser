@@ -24,7 +24,7 @@ import {
    HeatmapBin,
    HeatmapDelayBin,
    PieSlice,
-} from './types/dataTypes';
+} from '../types/dataTypes';
 import BoxPlot from '../components/graphs/BoxPlot';
 import Heatmap from '../components/graphs/Heatmap';
 import {TbQuestionMark, TbX} from 'react-icons/tb';
@@ -159,13 +159,21 @@ const Home: NextPage = () => {
                         )) {
                            tempDailyBoxes.push({
                               day: day,
+                              // @ts-expect-error
                               min: values.min,
+                              // @ts-expect-error
                               max: values.max,
+                              // @ts-expect-error
                               lwhisk: values.lwhisk,
+                              // @ts-expect-error
                               uwhisk: values.uwhisk,
+                              // @ts-expect-error
                               median: values['50%'],
+                              // @ts-expect-error
                               q1: values['25%'],
+                              // @ts-expect-error
                               q3: values['75%'],
+                              // @ts-expect-error
                               outliers: values.outliers,
                            });
                         }
@@ -178,13 +186,21 @@ const Home: NextPage = () => {
                         )) {
                            tempHourlyBoxes.push({
                               hour: parseInt(hour),
+                              // @ts-expect-error
                               min: values.min,
+                              // @ts-expect-error
                               max: values.max,
+                              // @ts-expect-error
                               lwhisk: values.lwhisk,
+                              // @ts-expect-error
                               uwhisk: values.uwhisk,
+                              // @ts-expect-error
                               median: values['50%'],
+                              // @ts-expect-error
                               q1: values['25%'],
+                              // @ts-expect-error
                               q3: values['75%'],
+                              // @ts-expect-error
                               outliers: values.outliers,
                            });
                         }
