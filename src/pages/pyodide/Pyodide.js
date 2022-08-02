@@ -1,5 +1,4 @@
 import {useContext, useEffect, useState} from 'react';
-import {unstable_renderSubtreeIntoContainer} from 'react-dom';
 import {PyodideContext} from './PyodideProvider';
 
 export default function Pyodide({
@@ -11,7 +10,7 @@ export default function Pyodide({
    onPythonOutput,
    currentStatus,
 }) {
-   const indexURL = 'https://cdn.jsdelivr.net/pyodide/v0.18.0/full/';
+   const indexURL = 'https://cdn.jsdelivr.net/pyodide/v0.20.0/full/';
    const {
       pyodide,
       hasLoadPyodideBeenCalled,

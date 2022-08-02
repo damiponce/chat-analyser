@@ -11,7 +11,12 @@
    -moz-osx-font-smoothing: grayscale;
    text-align: left;
    position: relative;
-   color: #333;
+   color: #525252;
+   height: 100%;
+}
+
+.uppy-Container {
+   height: 100%;
 }
 
 [dir='rtl'] .uppy-Root,

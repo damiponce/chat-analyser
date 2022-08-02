@@ -9,12 +9,12 @@ interface Props {
 }
 
 export const Uploader = (props: Props) => {
-   const uppy = Uppy({
+   const uppy = new Uppy({
       restrictions: {maxNumberOfFiles: 1, allowedFileTypes: ['.txt']},
       autoProceed: true,
    });
 
-   uppy.use(Tus, {endpoint: '/upload'});
+   // uppy.use(Tus, {endpoint: '/upload'});
 
    uppy.on('upload-success', (file, response) => {
       console.log(file);
@@ -35,7 +35,7 @@ export const Uploader = (props: Props) => {
    });
 
    return (
-      <div className="uploader_box">
+      <div className="card">
          {props.currentMessage || false ? (
             <div
                className={
@@ -59,6 +59,7 @@ export const Uploader = (props: Props) => {
                }}
             />
          )}
+         {/* <div style={{width: '100%', height: '100%', backgroundColor: 'red'}} /> */}
       </div>
    );
 };
