@@ -1,7 +1,7 @@
 {
    "extends": "next/core-web-vitals",
    "rules": {
-      "react-hooks/exhaustive-deps": "on",
+      "react-hooks/exhaustive-deps": "1",
       "@next/next/no-sync-scripts": "on"
    }
 }
